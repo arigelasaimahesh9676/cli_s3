@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  aws-cli: opensimsim/aws-cli@1.2.1
+
 jobs:
   build:
     working_directory: ~/app

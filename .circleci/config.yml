@@ -10,9 +10,15 @@ jobs:
       - run: npm install
       - run: npm run build --prod
       - run:
+          name: Install AWS CLI
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y python3-pip
+            sudo pip3 install awscli
+      - run:
           name: Deploy to S3 bucket
           command: |
-            aws configure set aws_access_key_id ${AKIA3FUG5DY4Z3LFJJOT}
+           aws configure set aws_access_key_id ${AKIA3FUG5DY4Z3LFJJOT}
             aws configure set aws_secret_access_key ${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}
             aws s3 cp dist/ s3://mlmknjnjnj
             
@@ -24,4 +30,4 @@ workflows:
       - build:
           filters:
             branches:
-              only: master
+              only: main
